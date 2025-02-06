@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hellohttp
+spec:
+  replicas: 2
+  revisionHistoryLimit: 3
+  selector:
+    matchLabels:
+      app: hellohttp
+  template:
+    metadata:
+      labels:
+        app: hellohttp
+    spec:
+      containers:
+      - image: 387254918478.dkr.ecr.us-east-2.amazonaws.com/devops:hello_http
+        name: hellohttp
+        ports:
+        - containerPort: 8081
